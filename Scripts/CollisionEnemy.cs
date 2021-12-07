@@ -5,19 +5,20 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class CollisionEnemy : MonoBehaviour
 {
-    [SerializeField] private float timeStun;
+    [SerializeField] private float _pushForceSide;
+    [SerializeField] private float _pushForceUp;
+    [SerializeField] private float _timeStun;
     [SerializeField] private Animator _animator;
     [SerializeField] private MovementPlayer _movementPlayer;
     [SerializeField] private GroundChecker _groundChecker;
 
-    private Rigidbody2D _rb2d;
+    private Rigidbody2D _rigidbody;
 
     private const string Damage = "Damage";
-    private const string Grounded = "Grounded";
 
     private void Start()
     {
-        _rb2d = GetComponent<Rigidbody2D>();
+        _rigidbody = GetComponent<Rigidbody2D>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)    
@@ -29,10 +30,10 @@ public class CollisionEnemy : MonoBehaviour
                 _movementPlayer.enabled = false;
                 _animator.SetTrigger(Damage);
                                
-                _rb2d.AddForce(Vector2.left * 5, ForceMode2D.Impulse);
-                _rb2d.AddForce(Vector2.up * 150);
+                _rigidbody.AddForce(Vector2.left * _pushForceSide, ForceMode2D.Impulse);
+                _rigidbody.AddForce(Vector2.up * (_pushForceUp / 2));
 
-                StartCoroutine(TimerStun(timeStun));
+                StartCoroutine(TimerStun(_timeStun));
             }
         }
 
@@ -43,10 +44,10 @@ public class CollisionEnemy : MonoBehaviour
                 _movementPlayer.enabled = false;
                 _animator.SetTrigger(Damage);
                                
-                _rb2d.AddForce(Vector2.right * 5, ForceMode2D.Impulse);
-                _rb2d.AddForce(Vector2.up * 150);
+                _rigidbody.AddForce(Vector2.right * _pushForceSide, ForceMode2D.Impulse);
+                _rigidbody.AddForce(Vector2.up * (_pushForceUp / 2));
 
-                StartCoroutine(TimerStun(timeStun));
+                StartCoroutine(TimerStun(_timeStun));
             }
         }
 
@@ -54,19 +55,18 @@ public class CollisionEnemy : MonoBehaviour
         {
             if(collision.collider.TryGetComponent<DestroyEnemy>(out DestroyEnemy destroyEnemy))
             {     
-                _rb2d.AddForce(Vector2.up * 300);
-                destroyEnemy.DeadEnemy();
+                _rigidbody.AddForce(Vector2.up * _pushForceUp);
+                destroyEnemy.Die();
             }
         }
     }
 
     private IEnumerator TimerStun(float time)
-    {
-        for(int i = 0; i < time; i++)
-        {
-            yield return null;
-        }
+    {        
+        WaitForSeconds waitForSeconds = new WaitForSeconds(time);
 
-        _movementPlayer.enabled = true;
+        yield return waitForSeconds;
+
+        _movementPlayer.enabled = true;        
     }
 }

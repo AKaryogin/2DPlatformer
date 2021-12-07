@@ -10,11 +10,11 @@ public class DestroyEnemy : MonoBehaviour
 
     private const string Dead = "Dead";
 
-    public void DeadEnemy()
+    public void Die()
     {        
         _movementEnemy.KillSequence();
         _animator.SetTrigger(Dead);
         _gemSpawner.Create(transform.position);
-        Destroy(GetComponentInParent<Enemy>().gameObject, 1f);
+        Destroy(transform.parent.gameObject, 1f);
     }
 }

@@ -14,12 +14,12 @@ public class MovementPlayer : MonoBehaviour
     private const string Speed = "Speed";
     private const string Grounded = "Grounded";
 
-    private Rigidbody2D _rb2d;
+    private Rigidbody2D _rigidbody;
     private bool _movesToRight = true;    
 
     private void Start()
     {
-        _rb2d = GetComponent<Rigidbody2D>();
+        _rigidbody = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
@@ -31,7 +31,7 @@ public class MovementPlayer : MonoBehaviour
     {
         float directionX = Input.GetAxis(Horizontal) * _speed;
 
-        _rb2d.velocity = new Vector2(directionX, _rb2d.velocity.y);
+        _rigidbody.velocity = new Vector2(directionX, _rigidbody.velocity.y);
 
         _animator.SetFloat(Speed, Mathf.Abs(directionX));        
 
@@ -53,7 +53,7 @@ public class MovementPlayer : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space) && _groundChecker.Grounded)
         {
-            _rb2d.AddForce(Vector2.up * _jumpForce);            
+            _rigidbody.AddForce(Vector2.up * _jumpForce);            
         }
 
         _animator.SetBool(Grounded, _groundChecker.Grounded);
