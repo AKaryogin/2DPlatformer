@@ -5,7 +5,7 @@ using UnityEngine;
 public class CompleteLevelOne : MonoBehaviour
 {
     [SerializeField] private PanelActivator _panelActivator;
-    [SerializeField] private Rigidbody2D _rb2d;
+    [SerializeField] private Rigidbody2D _rigidbody;
     [SerializeField] private Animator _animator;
 
     private const string Grounded = "Grounded";
@@ -17,7 +17,7 @@ public class CompleteLevelOne : MonoBehaviour
         {
             Debug.Log("Level Complete");
             movementPlayer.enabled = false;
-            _rb2d.velocity = Vector2.zero;
+            _rigidbody.velocity = Vector2.zero;
             _animator.SetBool(Grounded, true);
             _animator.SetFloat(Speed, 0f);
             _panelActivator.PanelEnable();

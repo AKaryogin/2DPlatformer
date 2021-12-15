@@ -234,4 +234,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _movementEnemy: {fileID: 9088773198543791998}
   _animator: {fileID: 9088773198543791999}
-  _gemSpawner: {fileID: 0}
+  _gemPoolSpawner: {fileID: 0}

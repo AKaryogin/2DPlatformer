@@ -23,38 +23,51 @@ public class CollisionEnemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)    
     {
+        PushLeft(collision);
+        PushRight(collision);
+        PushUp(collision);
+    }
+
+    private void PushLeft(Collision2D collision)
+    {
         if(_groundChecker.Grounded && transform.position.x < collision.transform.position.x)
         {
             if(collision.collider.TryGetComponent<MovementEnemy>(out MovementEnemy movementEnemy))
             {
                 _movementPlayer.enabled = false;
                 _animator.SetTrigger(Damage);
-                               
+
                 _rigidbody.AddForce(Vector2.left * _pushForceSide, ForceMode2D.Impulse);
                 _rigidbody.AddForce(Vector2.up * (_pushForceUp / 2));
 
                 StartCoroutine(TimerStun(_timeStun));
             }
         }
+    }
 
+    private void PushRight(Collision2D collision)
+    {
         if(_groundChecker.Grounded && transform.position.x > collision.transform.position.x)
         {
             if(collision.collider.TryGetComponent<MovementEnemy>(out MovementEnemy movementEnemy))
             {
                 _movementPlayer.enabled = false;
                 _animator.SetTrigger(Damage);
-                               
+
                 _rigidbody.AddForce(Vector2.right * _pushForceSide, ForceMode2D.Impulse);
                 _rigidbody.AddForce(Vector2.up * (_pushForceUp / 2));
 
                 StartCoroutine(TimerStun(_timeStun));
             }
         }
+    }
 
+    private void PushUp(Collision2D collision)
+    {
         if(_groundChecker.Grounded == false && transform.position.y > collision.transform.position.y)
         {
             if(collision.collider.TryGetComponent<DestroyEnemy>(out DestroyEnemy destroyEnemy))
-            {     
+            {
                 _rigidbody.AddForce(Vector2.up * _pushForceUp);
                 destroyEnemy.Die();
             }

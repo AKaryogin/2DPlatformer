@@ -3,10 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using IJunior.TypedScenes;
 
-public class LoadMainMenu : MonoBehaviour
+public class ScenesLoader : MonoBehaviour
 {
-    public void Load()
+    public void LoadMainMenu()
     {
         MainMenu.Load();
+    }
+
+    public void LoadLevelOne()
+    {
+        Level1.Load();
     }
 }

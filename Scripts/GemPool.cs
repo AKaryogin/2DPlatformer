@@ -6,11 +6,19 @@ public class GemPool : MonoBehaviour
 {
     private Gem[] _gems;   
 
-    public void CheckTakenAllGem()
+    public void Kill()
     {
-        _gems = gameObject.GetComponentsInChildren<Gem>();        
+        if(CheckTakenAllGem())
+            Destroy(gameObject, 1);
+    }
+
+    private bool CheckTakenAllGem()
+    {
+        _gems = gameObject.GetComponentsInChildren<Gem>();
 
         if(_gems.Length == 1)
-            Destroy(gameObject, 1f);
+            return true;
+
+        return false;
     }
 }

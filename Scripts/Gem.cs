@@ -13,12 +13,13 @@ public class Gem : MonoBehaviour
         _gemPool = gameObject.GetComponentInParent<GemPool>();
     }
 
+    public int Cost { get => _cost; }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.collider.TryGetComponent<GemCounter>(out GemCounter gemCounter))
         {
-            gemCounter.SetGems(_cost);
-            _gemPool?.CheckTakenAllGem();
+            _gemPool?.Kill();
             Destroy(gameObject);
         }                
     }        

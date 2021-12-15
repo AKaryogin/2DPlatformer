@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GemSpawner : MonoBehaviour
+public class GemPoolSpawner : MonoBehaviour
 {
     [SerializeField] private GemPool _gemPool;
 

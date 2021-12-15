@@ -9,10 +9,13 @@ public class GemCounter : MonoBehaviour
 
     private int _count = 0;
 
-    public void SetGems(int count)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        _count += count;
+        if(collision.collider.TryGetComponent<Gem>(out Gem gem))
+        {
+            _count += gem.Cost;
 
-        _textScore.text = "x " + _count;
+            _textScore.text = "x " + _count;
+        }
     }
 }
