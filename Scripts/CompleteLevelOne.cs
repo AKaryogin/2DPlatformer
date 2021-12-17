@@ -20,7 +20,7 @@ public class CompleteLevelOne : MonoBehaviour
             _rigidbody.velocity = Vector2.zero;
             _animator.SetBool(Grounded, true);
             _animator.SetFloat(Speed, 0f);
-            _panelActivator.PanelEnable();
+            _panelActivator.Enable();
         }
     }
 }

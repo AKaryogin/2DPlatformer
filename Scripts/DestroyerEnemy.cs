@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestroyEnemy : MonoBehaviour
+public class DestroyerEnemy : MonoBehaviour
 {
     [SerializeField] private MovementEnemy _movementEnemy;
     [SerializeField] private Animator _animator;

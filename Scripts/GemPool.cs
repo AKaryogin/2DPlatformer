@@ -16,9 +16,6 @@ public class GemPool : MonoBehaviour
     {
         _gems = gameObject.GetComponentsInChildren<Gem>();
 
-        if(_gems.Length == 1)
-            return true;
-
-        return false;
+        return (_gems.Length == 1) ? true : false;
     }
 }

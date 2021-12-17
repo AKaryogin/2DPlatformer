@@ -40,7 +40,7 @@ public class CollisionEnemy : MonoBehaviour
                 _rigidbody.AddForce(Vector2.left * _pushForceSide, ForceMode2D.Impulse);
                 _rigidbody.AddForce(Vector2.up * (_pushForceUp / 2));
 
-                StartCoroutine(TimerStun(_timeStun));
+                Stun(_timeStun);
             }
         }
     }
@@ -57,7 +57,7 @@ public class CollisionEnemy : MonoBehaviour
                 _rigidbody.AddForce(Vector2.right * _pushForceSide, ForceMode2D.Impulse);
                 _rigidbody.AddForce(Vector2.up * (_pushForceUp / 2));
 
-                StartCoroutine(TimerStun(_timeStun));
+                Stun(_timeStun);
             }
         }
     }
@@ -66,12 +66,17 @@ public class CollisionEnemy : MonoBehaviour
     {
         if(_groundChecker.Grounded == false && transform.position.y > collision.transform.position.y)
         {
-            if(collision.collider.TryGetComponent<DestroyEnemy>(out DestroyEnemy destroyEnemy))
+            if(collision.collider.TryGetComponent<DestroyerEnemy>(out DestroyerEnemy destroyEnemy))
             {
                 _rigidbody.AddForce(Vector2.up * _pushForceUp);
                 destroyEnemy.Die();
             }
         }
+    }
+
+    private void Stun(float time)
+    {
+        StartCoroutine(TimerStun(time));
     }
 
     private IEnumerator TimerStun(float time)

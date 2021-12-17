@@ -6,12 +6,12 @@ public class PanelActivator : MonoBehaviour
 {
     [SerializeField] private GameObject _panel;
 
-    public void PanelEnable()
+    public void Enable()
     {
         _panel.SetActive(true);
     }
 
-    public void PanelDisable()
+    public void Disable()
     {
         _panel.SetActive(false);
     }
