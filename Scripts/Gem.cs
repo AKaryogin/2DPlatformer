@@ -4,22 +4,14 @@ using UnityEngine;
 
 public class Gem : MonoBehaviour
 {    
-    [SerializeField] private int _cost;
-
-    private GemPool _gemPool;
-
-    private void OnEnable()
-    {
-        _gemPool = gameObject.GetComponentInParent<GemPool>();
-    }
+    [SerializeField] private int _cost;    
 
     public int Cost { get => _cost; }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.collider.TryGetComponent<GemCounter>(out GemCounter gemCounter))
-        {
-            _gemPool?.Kill();
+        {            
             Destroy(gameObject);
         }                
     }        

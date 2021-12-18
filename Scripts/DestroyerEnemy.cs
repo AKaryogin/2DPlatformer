@@ -10,9 +10,9 @@ public class DestroyerEnemy : MonoBehaviour
 
     private const string Dead = "Dead";
 
-    public void Die()
+    public void Kill()
     {        
-        _movementEnemy.KillSequence();
+        _movementEnemy.Stopping();
         _animator.SetTrigger(Dead);
         _gemPoolSpawner.Create(transform.position);
         Destroy(transform.parent.gameObject, 1f);

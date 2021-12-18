@@ -69,7 +69,7 @@ public class CollisionEnemy : MonoBehaviour
             if(collision.collider.TryGetComponent<DestroyerEnemy>(out DestroyerEnemy destroyEnemy))
             {
                 _rigidbody.AddForce(Vector2.up * _pushForceUp);
-                destroyEnemy.Die();
+                destroyEnemy.Kill();
             }
         }
     }

@@ -4,18 +4,10 @@ using UnityEngine;
 
 public class GemPool : MonoBehaviour
 {
-    private Gem[] _gems;   
+    [SerializeField] private float _timeDestroy;
 
-    public void Kill()
+    private void Start()
     {
-        if(CheckTakenAllGem())
-            Destroy(gameObject, 1);
-    }
-
-    private bool CheckTakenAllGem()
-    {
-        _gems = gameObject.GetComponentsInChildren<Gem>();
-
-        return (_gems.Length == 1) ? true : false;
+        Destroy(gameObject, _timeDestroy);
     }
 }

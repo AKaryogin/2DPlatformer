@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CompleteLevelOne : MonoBehaviour
+public class LevelOneEnd : MonoBehaviour
 {
     [SerializeField] private PanelActivator _panelActivator;
     [SerializeField] private Rigidbody2D _rigidbody;
@@ -14,8 +14,7 @@ public class CompleteLevelOne : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)    
     {
         if(collision.collider.TryGetComponent<MovementPlayer>(out MovementPlayer movementPlayer))
-        {
-            Debug.Log("Level Complete");
+        {            
             movementPlayer.enabled = false;
             _rigidbody.velocity = Vector2.zero;
             _animator.SetBool(Grounded, true);

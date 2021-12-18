@@ -22,7 +22,7 @@ public class MovementEnemy : MonoBehaviour
         
     }
 
-    public void KillSequence()
+    public void Stopping()
     {
         _sequence.Kill();
     } 

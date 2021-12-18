@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExitGame : MonoBehaviour
+public class Exit : MonoBehaviour
 {
-    public void Exit()
+    public void CloseGame()
     {
         Application.Quit();
     }

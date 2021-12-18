@@ -931,6 +931,7 @@ GameObject:
   - component: {fileID: 797250501}
   - component: {fileID: 797250500}
   - component: {fileID: 797250499}
+  - component: {fileID: 797250502}
   m_Layer: 5
   m_Name: Exit
   m_TagString: Untagged
@@ -1001,7 +1002,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 797250500}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 797250502}
+        m_TargetAssemblyTypeName: ExitGame, Assembly-CSharp
+        m_MethodName: Exit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &797250500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1040,6 +1053,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 797250497}
   m_CullTransparentMesh: 1
+--- !u!114 &797250502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797250497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db5c9e9fe73119c42a7f6943584b7934, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1385418491
 GameObject:
   m_ObjectHideFlags: 0
@@ -1466,8 +1491,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1980680400}
-        m_TargetAssemblyTypeName: LoadLevel1, Assembly-CSharp
-        m_MethodName: Load
+        m_TargetAssemblyTypeName: ScenesLoader, Assembly-CSharp
+        m_MethodName: LoadLevelOne
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1524,7 +1549,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1980680395}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86ccb0316dcdda44f81edccf709a845b, type: 3}
+  m_Script: {fileID: 11500000, guid: 9d8e23c147cb9594496d7d713a317fa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2063033909
@@ -1612,7 +1637,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1922300915}
         m_TargetAssemblyTypeName: PanelActivator, Assembly-CSharp
-        m_MethodName: PanelEnable
+        m_MethodName: Enable
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
